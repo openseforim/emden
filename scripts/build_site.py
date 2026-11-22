@@ -27,7 +27,7 @@ DOCS = ROOT / "docs"
 SITE = ROOT / "data" / "site"
 ASSETS = Path(__file__).resolve().parent / "site"
 PDF = ROOT / "kahana_1896_hb37017.pdf"
-REPO = "https://github.com/EzraBrand/emden-megillat-sefer"
+REPO = "https://github.com/openseforim/emden"
 HB = "https://hebrewbooks.org/pdfpager.aspx?req=37017&pgnum={}"
 SEC = re.compile(r"^## (.+?)\s*$", re.M)
 

@@ -1,5 +1,5 @@
 (function () {
-  var REPO = 'https://github.com/EzraBrand/emden-megillat-sefer';
+  var REPO = 'https://github.com/openseforim/emden';
   var root = document.documentElement, body = document.body;
   function get(k, d) { try { var v = localStorage.getItem(k); return v === null ? d : v; } catch (e) { return d; } }
   function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }

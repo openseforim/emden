@@ -6,7 +6,7 @@ background that a reader today is most likely to need. It follows the order of t
 
 *Draft, 21-Nov-2026, by Claude (Anthropic), not yet reviewed. What it says about the book is checked against the
 English draft (pp. 3–218); the general historical statements are standard but are not yet given references.
-Corrections are welcome on [GitHub](https://github.com/EzraBrand/emden-megillat-sefer/issues).*
+Corrections are welcome on [GitHub](https://github.com/openseforim/emden/issues).*
 
 ---
 
