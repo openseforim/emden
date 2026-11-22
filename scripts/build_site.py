@@ -286,9 +286,7 @@ def bar(chapters, current, reader=False):
 
 
 def foot():
-    return f"""<footer class="wrap foot">Draft translation by Claude (Anthropic), not yet reviewed. Hebrew: Kahana, Warsaw 1896/97 (public domain).
-Translation and notes CC BY-SA 4.0. <a href="{REPO}">Source on GitHub</a> · <a href="{REPO}/issues">corrections and questions</a>.</footer>
-<script src="app.js"></script>
+    return f"""<script src="app.js"></script>
 </body></html>"""
 
 
@@ -404,7 +402,7 @@ def main():
 <section class="page" id="{anchor}" data-label="{s['long']}" data-ch="{c['n']}">
   <header><h2><a class="self" href="#{anchor}">{html.escape(s['title'])}</a></h2>
   <span class="meta"><span class="badge {status}">{html.escape(badge)}</span>
-  <a class="fix" href="{REPO}/issues/new" target="_blank" rel="noopener">Suggest a correction</a>
+  <a class="fix" href="{REPO}/issues/new" target="_blank" rel="noopener">Report a mistake</a>
   <a class="scanlink" href="{HB.format(scan)}" target="_blank" rel="noopener">HebrewBooks scan {scan} ↗</a></span></header>
   <div class="cols">
     <div class="en" lang="en">{en_html}{kn_html}</div>
