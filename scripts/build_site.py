@@ -424,7 +424,7 @@ def main():
             f'<a href="ch{nextc["n"]}.html">{cname(nextc)} →</a>' if nextc else ""] if x)
         title = f"Megillat Sefer, {cname(c).lower()}"
         page = (head(title, f"Jacob Emden's autobiography, {cname(c).lower()}: {c['sub']}. Hebrew (Kahana 1896/97) with English draft translation.")
-                + f'<body class="reader">{bar(chapters, n, reader=True)}<div class="wrap">'
+                + f'<body class="reader">{bar(chapters, n, reader=True)}<div class="wrap" role="main">'
                 + f'<div class="top"><h1>{cname(c)} <span class="sub">{html.escape(c["sub"])}</span></h1>'
                 + f'<p class="sub">Jacob Emden, <i>Megillat Sefer</i> · Hebrew (Kahana, Warsaw 1896/97) with an English draft translation · work in progress</p>'
                 + f'<details class="pages" open><summary>Pages in this chapter</summary>{toc_html(chapters, link_file=False, only=n)}</details></div>'
@@ -437,7 +437,7 @@ def main():
     intro = markdown.markdown((SITE / "intro.md").read_text(encoding="utf-8"), extensions=["extra"])
     home = (head("Jacob Emden, Megillat Sefer: Hebrew and English",
                  "Reader for Jacob Emden's autobiography Megillat Sefer: Kahana's Hebrew text (1896/97) from Gershom Scholem's annotated copy, with an English draft translation.")
-            + f'<body>{bar(chapters, "home")}<div class="wrap">'
+            + f'<body>{bar(chapters, "home")}<div class="wrap" role="main">'
             + '<div class="top"><h1>Jacob Emden, <i>Megillat Sefer</i></h1>'
             + '<p class="sub">Hebrew (Kahana, Warsaw 1896/97, from Gershom Scholem\'s copy) with an English draft translation · work in progress</p></div>'
             + f'<div class="home"><article class="intro">{intro}</article>'
@@ -473,7 +473,7 @@ def main():
         groups.append(f'<h2>{lab} <span class="sub">({len(items)})</span></h2><ul class="idx">{"".join(items)}</ul>')
     jump = " · ".join(f'<a href="#t-{t}">{lab}</a>' for t, lab in labels.items())
     names = (head("Megillat Sefer: index of names", "Index of people, places and books in the English draft translation of Jacob Emden's Megillat Sefer.")
-             + f'<body>{bar(chapters, "names")}<div class="wrap"><div class="top"><h1>Index</h1>'
+             + f'<body>{bar(chapters, "names")}<div class="wrap" role="main"><div class="top"><h1>Index</h1>'
              + '<p class="sub">People, places and books named in the English draft (main text and Kahana\'s notes). Built by name patterns, so '
              + 'mentions by title only ("my father", "the gaon") are not listed. Each page link goes to the page where the name occurs.</p>'
              + f'<p class="toc">{jump}</p></div>'
@@ -485,14 +485,14 @@ def main():
     bg_md = re.sub(r"^# .*\n", "", bg_md, count=1)
     bg = (head("Megillat Sefer: background for the reader",
                "Historical, medical and everyday background for reading Jacob Emden's autobiography Megillat Sefer.")
-          + f'<body>{bar(chapters, "background")}<div class="wrap"><div class="top"><h1>Background for the reader</h1></div>'
+          + f'<body>{bar(chapters, "background")}<div class="wrap" role="main"><div class="top"><h1>Background for the reader</h1></div>'
           + f'<article class="intro bgnote">{markdown.markdown(bg_md, extensions=["extra"])}</article></div>' + foot())
     (DOCS / "background.html").write_text(bg, encoding="utf-8")
 
     # search
     (DOCS / "search.json").write_text(json.dumps(search, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     srch = (head("Megillat Sefer: search", "Search the Hebrew text and English draft translation of Jacob Emden's Megillat Sefer.")
-            + f'<body>{bar(chapters, "search")}<div class="wrap"><div class="top"><h1>Search</h1>'
+            + f'<body>{bar(chapters, "search")}<div class="wrap" role="main"><div class="top"><h1>Search</h1>'
             + '<p class="sub">Searches the Hebrew (with Kahana\'s notes) and the English. Hebrew search ignores gershayim and quotation marks; '
             + 'English search ignores accents (Hakham finds Ḥakham).</p>'
             + '<form id="sf" class="bigsearch"><input type="search" id="q" name="q" autofocus aria-label="Search"> '
@@ -534,3 +534,19 @@ margin; the NLI scan of the same copy (258 images) shows the full margins and ha
 
 if __name__ == "__main__":
     main()
+
+
+# --- Open Seforim post-build: canonical and social tags, descriptions, lang, CSS/JS version stamps.
+# The tool lives in the org site clone (openseforim-site/tools/postbuild.py); skipped if that clone is missing.
+def _os_postbuild():
+    import subprocess
+    from pathlib import Path as _P
+    claude = _P(__file__).resolve().parents[2]
+    tool = claude / "openseforim-site" / "tools" / "postbuild.py"
+    if tool.exists():
+        subprocess.run([sys.executable, str(tool), "emden", str(claude / "emden-megillat-sefer/docs")], check=False)
+
+
+if __name__ == "__main__":
+    import sys
+    _os_postbuild()
