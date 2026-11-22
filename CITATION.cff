@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this edition, please cite it as below."
+title: "Jacob Emden, Megillat Sefer: reading edition with English translation"
+type: dataset
+authors:
+  - family-names: Brand
+    given-names: Ezra
+abstract: "Kahana's Hebrew text (1896/97) from Gershom Scholem's annotated copy, with an English translation. Kraken OCR checked line by line against the scan; English translation made with Claude (Anthropic)."
+license: CC-BY-SA-4.0
+url: "https://openseforim.org/emden/"
+repository-code: "https://github.com/openseforim/emden"
+keywords:
+  - "Judaica"
+  - "Hebrew"
+  - "digital humanities"
+  - "translation"
+  - "digital edition"

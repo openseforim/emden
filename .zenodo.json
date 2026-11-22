@@ -1,0 +1,33 @@
+{
+  "title": "Jacob Emden, Megillat Sefer: reading edition with English translation",
+  "upload_type": "publication",
+  "publication_type": "book",
+  "description": "<p>Kahana's Hebrew text (1896/97) from Gershom Scholem's annotated copy, with an English translation.</p><p>Kraken OCR checked line by line against the scan; English translation made with Claude (Anthropic).</p><p>Read online: <a href=\"https://openseforim.org/emden/\">https://openseforim.org/emden/</a></p>",
+  "creators": [
+    {
+      "name": "Brand, Ezra"
+    }
+  ],
+  "license": "cc-by-sa-4.0",
+  "access_right": "open",
+  "keywords": [
+    "Judaica",
+    "Hebrew",
+    "digital humanities",
+    "translation",
+    "digital edition"
+  ],
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "https://openseforim.org/emden/",
+      "relation": "isDocumentedBy",
+      "resource_type": "publication-other"
+    },
+    {
+      "identifier": "https://hebrewbooks.org/37017",
+      "relation": "isDerivedFrom",
+      "resource_type": "publication-book"
+    }
+  ]
+}
