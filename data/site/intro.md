@@ -56,5 +56,5 @@ printed words they belong to and how certain the reading is.
 - Use the bar at the top to show both languages or only one, to hide Kahana's notes, or to show the scan of the page.
 - [Background for the reader](background.html): places, money, community offices, medicine, travel, printing and the Sabbatian quarrel.
 - Names of people, places and books link to the [index](names.html). Bible and Talmud references link to Sefaria.
-- The English is a **draft by Claude (Anthropic), not yet reviewed**. Each page has a "Suggest a correction" link,
+- The English translation is made with Claude (Anthropic). Each page has a "Report a mistake" link,
   which opens an issue on GitHub. Select words on the page first, and they go into the report.

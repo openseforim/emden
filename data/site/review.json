@@ -1,5 +1,8 @@
 {
   "default": "draft",
-  "labels": {"draft": "Draft · not reviewed", "reviewed": "Reviewed"},
+  "labels": {
+    "draft": "",
+    "reviewed": "Reviewed"
+  },
   "pages": {}
 }

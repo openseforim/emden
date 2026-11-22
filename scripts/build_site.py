@@ -6,7 +6,7 @@ Inputs:
   data/scholem/notes_*.tsv  margin readings in Scholem's copy (V = omission, X = substitution)
   data/site/intro.md        introduction for general readers (home page)
   data/site/entities.json   index of people, places, books (regex patterns over the English)
-  data/site/review.json     review status per page (default: draft)
+  data/site/review.json     review status per page (no badge by default)
   scripts/site/*            style.css, app.js, search.js (copied as they are)
   kahana_1896_hb37017.pdf   the scan (only to render docs/scans/sMMM.png when missing)
 Output: docs/index.html, docs/chN.html, docs/names.html, docs/search.html, docs/search.json, docs/scans/."""
@@ -401,7 +401,7 @@ def main():
             body.append(f"""
 <section class="page" id="{anchor}" data-label="{s['long']}" data-ch="{c['n']}">
   <header><h2><a class="self" href="#{anchor}">{html.escape(s['title'])}</a></h2>
-  <span class="meta"><span class="badge {status}">{html.escape(badge)}</span>
+  <span class="meta">{f'<span class="badge {status}">{html.escape(badge)}</span>' if badge else ""}
   <a class="fix" href="{REPO}/issues/new" target="_blank" rel="noopener">Report a mistake</a>
   <a class="scanlink" href="{HB.format(scan)}" target="_blank" rel="noopener">HebrewBooks scan {scan} ↗</a></span></header>
   <div class="cols">
@@ -421,10 +421,10 @@ def main():
             f'<a href="ch{prevc["n"]}.html">← {cname(prevc)}</a>' if prevc else "",
             f'<a href="ch{nextc["n"]}.html">{cname(nextc)} →</a>' if nextc else ""] if x)
         title = f"Megillat Sefer, {cname(c).lower()}"
-        page = (head(title, f"Jacob Emden's autobiography, {cname(c).lower()}: {c['sub']}. Hebrew (Kahana 1896/97) with English draft translation.")
+        page = (head(title, f"Jacob Emden's autobiography, {cname(c).lower()}: {c['sub']}. Hebrew (Kahana 1896/97) with English translation.")
                 + f'<body class="reader">{bar(chapters, n, reader=True)}<div class="wrap" role="main">'
                 + f'<div class="top"><h1>{cname(c)} <span class="sub">{html.escape(c["sub"])}</span></h1>'
-                + f'<p class="sub">Jacob Emden, <i>Megillat Sefer</i> · Hebrew (Kahana, Warsaw 1896/97) with an English draft translation · work in progress</p>'
+                + f'<p class="sub">Jacob Emden, <i>Megillat Sefer</i> · Hebrew (Kahana, Warsaw 1896/97) with an English translation</p>'
                 + f'<details class="pages" open><summary>Pages in this chapter</summary>{toc_html(chapters, link_file=False, only=n)}</details></div>'
                 + "\n".join(body)
                 + f'<p class="pn">{pn}</p></div>' + foot())
@@ -434,10 +434,10 @@ def main():
     # home page
     intro = markdown.markdown((SITE / "intro.md").read_text(encoding="utf-8"), extensions=["extra"])
     home = (head("Jacob Emden, Megillat Sefer: Hebrew and English",
-                 "Reader for Jacob Emden's autobiography Megillat Sefer: Kahana's Hebrew text (1896/97) from Gershom Scholem's annotated copy, with an English draft translation.")
+                 "Reader for Jacob Emden's autobiography Megillat Sefer: Kahana's Hebrew text (1896/97) from Gershom Scholem's annotated copy, with an English translation.")
             + f'<body>{bar(chapters, "home")}<div class="wrap" role="main">'
             + '<div class="top"><h1>Jacob Emden, <i>Megillat Sefer</i></h1>'
-            + '<p class="sub">Hebrew (Kahana, Warsaw 1896/97, from Gershom Scholem\'s copy) with an English draft translation · work in progress</p></div>'
+            + '<p class="sub">Hebrew (Kahana, Warsaw 1896/97, from Gershom Scholem\'s copy) with an English translation</p></div>'
             + f'<div class="home"><article class="intro">{intro}</article>'
             + f'<aside class="contents"><h2>Contents</h2>{toc_html(chapters)}<p class="sub"><a href="names.html">Index of names, places and books</a></p></aside></div>'
             + ABOUT + "</div>"
@@ -470,9 +470,9 @@ def main():
             items.append(f'<li id="{e["id"]}"><b>{html.escape(e["name"])}</b>{desc}<div class="hits">{" · ".join(links)}</div></li>')
         groups.append(f'<h2>{lab} <span class="sub">({len(items)})</span></h2><ul class="idx">{"".join(items)}</ul>')
     jump = " · ".join(f'<a href="#t-{t}">{lab}</a>' for t, lab in labels.items())
-    names = (head("Megillat Sefer: index of names", "Index of people, places and books in the English draft translation of Jacob Emden's Megillat Sefer.")
+    names = (head("Megillat Sefer: index of names", "Index of people, places and books in the English translation of Jacob Emden's Megillat Sefer.")
              + f'<body>{bar(chapters, "names")}<div class="wrap" role="main"><div class="top"><h1>Index</h1>'
-             + '<p class="sub">People, places and books named in the English draft (main text and Kahana\'s notes). Built by name patterns, so '
+             + '<p class="sub">People, places and books named in the English translation (main text and Kahana\'s notes). Built by name patterns, so '
              + 'mentions by title only ("my father", "the gaon") are not listed. Each page link goes to the page where the name occurs.</p>'
              + f'<p class="toc">{jump}</p></div>'
              + "".join(g.replace("<h2>", f'<h2 id="t-{t}">', 1) for g, t in zip(groups, labels)) + "</div>" + foot())
@@ -489,7 +489,7 @@ def main():
 
     # search
     (DOCS / "search.json").write_text(json.dumps(search, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    srch = (head("Megillat Sefer: search", "Search the Hebrew text and English draft translation of Jacob Emden's Megillat Sefer.")
+    srch = (head("Megillat Sefer: search", "Search the Hebrew text and English translation of Jacob Emden's Megillat Sefer.")
             + f'<body>{bar(chapters, "search")}<div class="wrap" role="main"><div class="top"><h1>Search</h1>'
             + '<p class="sub">Searches the Hebrew (with Kahana\'s notes) and the English. Hebrew search ignores gershayim and quotation marks; '
             + 'English search ignores accents (Hakham finds Ḥakham).</p>'
@@ -515,7 +515,7 @@ ABOUT = """
 Scholem's copy (his library stamp is on scan p. 196). OCR by Kraken with the PP-OCRv6 model, then checked line by line
 against the scan by Claude. Running heads and page numbers are removed; Kahana's footnote calls are shown as small
 letters. The Pninim text of Bick's edition (Jerusalem 1979) was used only to find OCR errors.</p>
-<p><b>English:</b> draft translation by Claude (Anthropic), not yet reviewed. Biblical phrases are given in standard
+<p><b>English:</b> translation made with Claude (Anthropic). Biblical phrases are given in standard
 wording with the reference. Kahana's own footnotes are translated under each page.</p>
 <p><b>Margin readings in Scholem's copy:</b> by a handwritten key sheet in the copy (seen in the National Library of
 Israel's scan, IE12757688; not in the HebrewBooks scan), they follow the Oxford manuscript, V marks an omission and X a

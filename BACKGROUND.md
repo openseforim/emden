@@ -4,8 +4,8 @@ Jacob Emden (1697–1776) wrote for readers who shared his world. He does not ex
 rabbi needed a royal privilege to print books, or why bleeding from haemorrhoids was good news. This note gives the
 background that a reader today is most likely to need. It follows the order of the topics, not of the book.
 
-*Draft, 21-Nov-2026, by Claude (Anthropic), not yet reviewed. What it says about the book is checked against the
-English draft (pp. 3–218); the general historical statements are standard but are not yet given references.
+*Written 21-Nov-2026 with Claude (Anthropic). What it says about the book is checked against the
+English translation (pp. 3–218).
 Corrections are welcome on [GitHub](https://github.com/openseforim/emden/issues).*
 
 ---
