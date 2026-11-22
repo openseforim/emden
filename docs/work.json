@@ -16,5 +16,9 @@
   "method": "Kraken OCR checked line by line against the scan; English draft translation by Claude (Anthropic), not yet reviewed.",
   "cite": "Jacob Emden, Megillat Sefer, Hebrew text ed. Kahana (1896/97) with an English draft translation, ed. Ezra Brand. Open Seforim",
   "url": "https://openseforim.org/emden/",
-  "repo": "https://github.com/openseforim/emden"
+  "repo": "https://github.com/openseforim/emden",
+  "licence": {
+    "name": "Translation and notes: CC BY 4.0; code: MIT",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  }
 }
