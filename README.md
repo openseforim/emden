@@ -1,6 +1,6 @@
 # Jacob Emden, *Megillat Sefer*: Hebrew text and English draft translation
 
-Reader: https://ezrabrand.github.io/emden-megillat-sefer/
+Reader: https://openseforim.org/emden/
 
 Work in progress: the autobiography of R. Jacob Emden (1697–1776), page by page, in Hebrew with an English draft
 translation.
