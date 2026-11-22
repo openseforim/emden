@@ -44,4 +44,4 @@ Scan page to book page: scan 11 = p. 3; scan 17 is the typed insert, scan 18 is 
 
 ## Licence
 
-Code: MIT. Translation and notes: CC BY 4.0. Kahana's 1896 text is in the public domain.
+Code: MIT. Transcription, translation and notes: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) (see `LICENSE-TEXT`). Kahana's 1896 text is in the public domain.

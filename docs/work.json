@@ -18,7 +18,7 @@
   "url": "https://openseforim.org/emden/",
   "repo": "https://github.com/openseforim/emden",
   "licence": {
-    "name": "Translation and notes: CC BY 4.0; code: MIT",
-    "url": "https://creativecommons.org/licenses/by/4.0/"
+    "name": "CC BY-SA 4.0 (texts and translations); code: MIT",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/"
   }
 }

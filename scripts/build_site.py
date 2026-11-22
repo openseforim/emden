@@ -287,7 +287,7 @@ def bar(chapters, current, reader=False):
 
 def foot():
     return f"""<footer class="wrap foot">Draft translation by Claude (Anthropic), not yet reviewed. Hebrew: Kahana, Warsaw 1896/97 (public domain).
-Translation and notes CC BY 4.0. <a href="{REPO}">Source on GitHub</a> · <a href="{REPO}/issues">corrections and questions</a>.</footer>
+Translation and notes CC BY-SA 4.0. <a href="{REPO}">Source on GitHub</a> · <a href="{REPO}/issues">corrections and questions</a>.</footer>
 <script src="app.js"></script>
 </body></html>"""
 
