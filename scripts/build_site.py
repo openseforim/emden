@@ -250,10 +250,12 @@ def head(title, desc, extra=""):
 <meta name="description" content="{html.escape(desc)}">
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:type" content="website">
-<script>(function(){{try{{var t=localStorage.getItem('ms-theme');if(t&&t!=='auto')document.documentElement.setAttribute('data-theme',t);}}catch(e){{}}}})();</script>
+<script>(function(){{try{{var t=localStorage.getItem('os-theme');if(t&&t!=='auto')document.documentElement.setAttribute('data-theme',t);}}catch(e){{}}}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Noto+Serif+Hebrew:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">{extra}
+<link rel="stylesheet" href="/assets/os.css">
+<script src="/assets/os.js" defer></script>
 </head>"""
 
 

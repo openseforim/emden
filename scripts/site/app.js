@@ -10,8 +10,8 @@
     if (v === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', v);
     if (th) th.value = v;
   }
-  applyTheme(get('ms-theme', 'auto'));
-  if (th) th.addEventListener('change', function () { set('ms-theme', th.value); applyTheme(th.value); });
+  applyTheme(get('os-theme', 'auto'));
+  if (th) th.addEventListener('change', function () { set('os-theme', th.value); applyTheme(th.value); });
 
   // search box: keep the query on the search page
   var q = new URLSearchParams(location.search).get('q');
