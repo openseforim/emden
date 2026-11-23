@@ -20,6 +20,7 @@
   "cite": "Jacob Emden, *Megillat Sefer*, Hebrew text ed. Kahana (1896/97) with an English translation, ed. Ezra Brand. Open Seforim",
   "url": "https://openseforim.org/emden/",
   "repo": "https://github.com/openseforim/emden",
+  "doi": "10.5281/zenodo.24458128",
   "licence": {
     "name": "CC BY-SA 4.0 (texts and translations); code: MIT",
     "url": "https://creativecommons.org/licenses/by-sa/4.0/"

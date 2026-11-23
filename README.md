@@ -1,5 +1,7 @@
 # Jacob Emden, *Megillat Sefer*: Hebrew text and English draft translation
 
+Cite as: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24458128.svg)](https://doi.org/10.5281/zenodo.24458128) (Zenodo; this DOI always points to the newest release)
+
 Reader: https://openseforim.org/emden/
 
 Work in progress: the autobiography of R. Jacob Emden (1697–1776), page by page, in Hebrew with an English draft
