@@ -107,8 +107,46 @@ def hebrew_plain(scan):
     return text
 
 
+def join_lines(lines):
+    text = ""
+    for l in lines:
+        if text.endswith("-"):
+            text = text[:-1] + l
+        else:
+            text += (" " if text else "") + l
+    return text
+
+
+_PARAS = None
+
+
+def hebrew_paragraphs(scan):
+    """The page's Hebrew as paragraphs, split where the printed page starts one (data/hebrew_paras.json, from
+    scripts/hebrew_paras.py). A page without that data stays one block."""
+    global _PARAS
+    if _PARAS is None:
+        p = ROOT / "data" / "hebrew_paras.json"
+        _PARAS = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    p = ROOT / "data" / "text" / f"s{scan:03d}.he.txt"
+    if not p.exists():
+        return []
+    lines = [l.rstrip() for l in p.read_text(encoding="utf-8").splitlines() if l.strip()]
+    lines = [l for l in lines if not (l.startswith("[TYPED INSERT") or l.startswith("[HANDWRITTEN SHEET"))]
+    starts = set(_PARAS.get(f"s{scan:03d}", {}).get("starts", []))
+    paras, cur = [], []
+    for i, l in enumerate(lines, 1):
+        if i in starts and cur:
+            paras.append(cur)
+            cur = []
+        cur.append(l)
+    if cur:
+        paras.append(cur)
+    return [join_lines(p) for p in paras]
+
+
 def hebrew(scan):
-    return re.sub(r"\[([א-ט])\]", r'<sup class="fn">\1</sup>', html.escape(hebrew_plain(scan)))
+    return "".join("<p>" + re.sub(r"\[([א-ט])\]", r'<sup class="fn">\1</sup>', html.escape(t)) + "</p>"
+                   for t in hebrew_paragraphs(scan))
 
 
 def hebrew_notes_list(scan):
@@ -406,7 +444,7 @@ def main():
   <a class="scanlink" href="{HB.format(scan)}" target="_blank" rel="noopener">HebrewBooks scan {scan} ↗</a></span></header>
   <div class="cols">
     <div class="en" lang="en">{en_html}{kn_html}</div>
-    <div class="he" dir="rtl" lang="he">{('<p>' + hebrew(scan) + '</p>') if hebrew_plain(scan) else '<p class="pending" dir="ltr">The checked Hebrew of this page is not ready yet (OCR pending). See the scan.</p>'}{f'<ol class="knotes">{he_notes_html}</ol>' if he_notes_html else ''}</div>
+    <div class="he" dir="rtl" lang="he">{hebrew(scan) if hebrew_plain(scan) else '<p class="pending" dir="ltr">The checked Hebrew of this page is not ready yet (OCR pending). See the scan.</p>'}{f'<ol class="knotes">{he_notes_html}</ol>' if he_notes_html else ''}</div>
     <figure class="scanimg"><img data-src="scans/s{scan:03d}.png" alt="Scan page {scan} (Scholem's copy of Kahana's edition)" width="1094" height="1719" loading="lazy"><figcaption>Scan {scan}</figcaption></figure>
   </div>
   {sch_html}

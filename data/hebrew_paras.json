@@ -1,0 +1,458 @@
+{
+ "s011": {
+  "lines": 20,
+  "column_lines": 20,
+  "starts": [
+   2,
+   4
+  ],
+  "why": {
+   "2": "indent 12%, prev short 15%",
+   "4": "indent 7%, prev short 52%"
+  },
+  "last_short": false
+ },
+ "s012": {
+  "lines": 24,
+  "column_lines": 24,
+  "starts": [
+   20
+  ],
+  "why": {
+   "20": "indent 15%"
+  },
+  "last_short": false
+ },
+ "s013": {
+  "lines": 26,
+  "column_lines": 26,
+  "starts": [
+   3
+  ],
+  "why": {
+   "3": "indent 8%, prev short 23%"
+  },
+  "last_short": false
+ },
+ "s014": {
+  "lines": 30,
+  "column_lines": 30,
+  "starts": [
+   4,
+   25
+  ],
+  "why": {
+   "4": "indent 8%, prev short 62%",
+   "25": "prev short 72%"
+  },
+  "last_short": false
+ },
+ "s015": {
+  "lines": 32,
+  "column_lines": 32,
+  "starts": [
+   24
+  ],
+  "why": {
+   "24": "indent 9%"
+  },
+  "last_short": false
+ },
+ "s016": {
+  "lines": 34,
+  "column_lines": 34,
+  "starts": [
+   21
+  ],
+  "why": {
+   "21": "indent 9%, prev short 79%"
+  },
+  "last_short": false
+ },
+ "s017": {
+  "lines": 24,
+  "column_lines": 4,
+  "starts": [],
+  "why": {},
+  "mismatch": true
+ },
+ "s019": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   16
+  ],
+  "why": {
+   "16": "indent 9%, prev short 75%"
+  },
+  "last_short": false
+ },
+ "s020": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   9,
+   24,
+   31
+  ],
+  "why": {
+   "9": "indent 9%, prev short 88%",
+   "24": "indent 9%, prev short 72%",
+   "31": "indent 9%, prev short 76%"
+  },
+  "last_short": false
+ },
+ "s021": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [],
+  "why": {},
+  "last_short": false
+ },
+ "s022": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   9
+  ],
+  "why": {
+   "9": "indent 8%, prev short 64%"
+  },
+  "last_short": false
+ },
+ "s023": {
+  "lines": 32,
+  "column_lines": 32,
+  "starts": [
+   18
+  ],
+  "why": {
+   "18": "indent 9%, prev short 72%"
+  },
+  "last_short": false
+ },
+ "s024": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [
+   20
+  ],
+  "why": {
+   "20": "indent 8%, prev short 85%"
+  },
+  "last_short": false
+ },
+ "s025": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [],
+  "why": {},
+  "last_short": false
+ },
+ "s026": {
+  "lines": 34,
+  "column_lines": 34,
+  "starts": [
+   22
+  ],
+  "why": {
+   "22": "indent 9%, prev short 84%"
+  },
+  "last_short": false
+ },
+ "s027": {
+  "lines": 32,
+  "column_lines": 32,
+  "starts": [
+   18
+  ],
+  "why": {
+   "18": "indent 9%"
+  },
+  "last_short": false
+ },
+ "s028": {
+  "lines": 29,
+  "column_lines": 29,
+  "starts": [
+   18,
+   27
+  ],
+  "why": {
+   "18": "prev short 86%",
+   "27": "indent 7%, prev short 29%"
+  },
+  "last_short": false
+ },
+ "s029": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [
+   27
+  ],
+  "why": {
+   "27": "indent 9%, prev short 42%"
+  },
+  "last_short": false
+ },
+ "s030": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [
+   11
+  ],
+  "why": {
+   "11": "indent 9%, prev short 10%"
+  },
+  "last_short": false
+ },
+ "s031": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   5
+  ],
+  "why": {
+   "5": "indent 7%, prev short 56%"
+  },
+  "last_short": false
+ },
+ "s032": {
+  "lines": 32,
+  "column_lines": 32,
+  "starts": [
+   13
+  ],
+  "why": {
+   "13": "indent 9%, prev short 27%"
+  },
+  "last_short": false
+ },
+ "s033": {
+  "lines": 33,
+  "column_lines": 33,
+  "starts": [],
+  "why": {},
+  "last_short": false
+ },
+ "s034": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [
+   34
+  ],
+  "why": {
+   "34": "prev short 9%"
+  },
+  "last_short": false
+ },
+ "s035": {
+  "lines": 29,
+  "column_lines": 29,
+  "starts": [
+   3
+  ],
+  "why": {
+   "3": "indent 8%"
+  },
+  "last_short": false
+ },
+ "s036": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [
+   13
+  ],
+  "why": {
+   "13": "indent 9%, prev short 53%"
+  },
+  "last_short": false
+ },
+ "s037": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [
+   6,
+   29
+  ],
+  "why": {
+   "6": "indent 9%, prev short 48%",
+   "29": "indent 9%, prev short 24%"
+  },
+  "last_short": false
+ },
+ "s038": {
+  "lines": 30,
+  "column_lines": 30,
+  "starts": [],
+  "why": {},
+  "last_short": false
+ },
+ "s039": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [
+   3,
+   5
+  ],
+  "why": {
+   "3": "indent 7%, prev short 54%",
+   "5": "prev short 38%"
+  },
+  "last_short": false
+ },
+ "s040": {
+  "lines": 30,
+  "column_lines": 30,
+  "starts": [
+   20
+  ],
+  "why": {
+   "20": "indent 9%, prev short 23%"
+  },
+  "last_short": false
+ },
+ "s041": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   2,
+   27
+  ],
+  "why": {
+   "2": "indent 11%",
+   "27": "indent 10%, prev short 39%"
+  },
+  "last_short": false
+ },
+ "s042": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [],
+  "why": {},
+  "last_short": false
+ },
+ "s043": {
+  "lines": 30,
+  "column_lines": 30,
+  "starts": [],
+  "why": {},
+  "last_short": false
+ },
+ "s044": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   6,
+   14,
+   17
+  ],
+  "why": {
+   "6": "indent 9%, prev short 22%",
+   "14": "indent 27%",
+   "17": "indent 3%"
+  },
+  "last_short": false
+ },
+ "s045": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   6,
+   26
+  ],
+  "why": {
+   "6": "indent 4%",
+   "26": "indent 9%, prev short 91%"
+  },
+  "last_short": false
+ },
+ "s046": {
+  "lines": 35,
+  "column_lines": 35,
+  "starts": [],
+  "why": {},
+  "last_short": false
+ },
+ "s047": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   2,
+   21
+  ],
+  "why": {
+   "2": "indent 8%",
+   "21": "indent 9%, prev short 67%"
+  },
+  "last_short": false
+ },
+ "s048": {
+  "lines": 29,
+  "column_lines": 29,
+  "starts": [
+   18
+  ],
+  "why": {
+   "18": "indent 8%, prev short 83%"
+  },
+  "last_short": false
+ },
+ "s049": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   7,
+   18
+  ],
+  "why": {
+   "7": "indent 9%, prev short 64%",
+   "18": "indent 73%"
+  },
+  "last_short": true
+ },
+ "s050": {
+  "lines": 30,
+  "column_lines": 30,
+  "starts": [],
+  "why": {},
+  "last_short": false
+ },
+ "s074": {
+  "lines": 32,
+  "column_lines": 32,
+  "starts": [
+   8,
+   26
+  ],
+  "why": {
+   "8": "indent 8%, prev short 82%",
+   "26": "indent 9%, prev short 20%"
+  },
+  "last_short": false
+ },
+ "s100": {
+  "lines": 33,
+  "column_lines": 33,
+  "starts": [
+   12,
+   22
+  ],
+  "why": {
+   "12": "indent 9%, prev short 46%",
+   "22": "indent 9%"
+  },
+  "last_short": false
+ },
+ "s150": {
+  "lines": 31,
+  "column_lines": 31,
+  "starts": [
+   26
+  ],
+  "why": {
+   "26": "indent 8%, prev short 33%"
+  },
+  "last_short": false
+ }
+}

@@ -11,3 +11,5 @@ logs/
 __pycache__/
 !docs/scans/*.png
 data/nli/
+# Kraken line segmentation (scripts/hebrew_paras.py segment): derived, about 8 MB
+data/kseg/
