@@ -129,9 +129,21 @@ def page_breaks(scan):
     W = R - L
     rec = {"lines": len(text), "column_lines": len(col), "starts": [], "why": {}}
     if len(col) != len(text):
-        rec["mismatch"] = True
-        return rec
+        if abs(len(col) - len(text)) > 4 or len(text) < 5:
+            rec["mismatch"] = True
+            return rec
+        # off by a few lines (a footnote line, a split or a missed line): match printed lines to text lines by
+        # their length, skipping the extra ones, and keep only the text lines that found a printed line
+        pairs = align_by_length(col, text, W)
+        if len(pairs) < 0.85 * len(text):
+            rec["mismatch"] = True
+            return rec
+        rec["aligned"] = len(pairs)
+        by_text = dict(pairs)
+        col = [by_text.get(i) for i in range(len(text))]
     for i in range(1, len(col)):
+        if col[i] is None or col[i - 1] is None:  # an unmatched line: no evidence either way
+            continue
         indent = R - col[i]["x1"]
         short_prev = col[i - 1]["x0"] - L
         why = []
@@ -142,15 +154,50 @@ def page_breaks(scan):
         if indent > 0.025 * W:  # a set-off block: same indent as the line before, which reached the block's edge
             p_indent, p_left = R - col[i - 1]["x1"], short_prev
             block_left = min(p_left, col[i]["x0"] - L)
-            if i >= 2 and abs((R - col[i - 2]["x1"]) - p_indent) < 0.015 * W:
+            if i >= 2 and col[i - 2] is not None and abs((R - col[i - 2]["x1"]) - p_indent) < 0.015 * W:
                 block_left = min(block_left, col[i - 2]["x0"] - L)
             if abs(indent - p_indent) < 0.015 * W and p_left <= block_left + 0.04 * W:
+                why = []
+        # a paragraph ends with a full stop (or : ? ! or a closing bracket). After a line without one, an indent
+        # alone or a short line alone is a margin gloss, an inserted line or a picture: ask for both, clearly
+        if why and not text[i - 1].rstrip().endswith((".", ":", "?", "!", "]", ")", ";", '"')):
+            if not (indent > 0.025 * W and short_prev > 0.2 * W):
                 why = []
         if why:
             rec["starts"].append(i + 1)
             rec["why"][str(i + 1)] = ", ".join(why)
-    rec["last_short"] = bool((col[-1]["x0"] - L) / W > 0.06) if col else False
+    rec["last_short"] = bool((col[-1]["x0"] - L) / W > 0.06) if col and col[-1] is not None else False
     return rec
+
+
+def align_by_length(col, text, W):
+    """Monotonic match of printed lines (pixel length) to text lines (letter count), skipping extra lines on either
+    side. Returns [(text index, printed line)]."""
+    full = statistics.median(len(t) for t in text) or 1
+    fc = [(c["x1"] - c["x0"]) / W for c in col]
+    ft = [min(len(t) / full, 1.1) for t in text]
+    n, m, SKIP = len(text), len(col), 0.35
+    INF = float("inf")
+    D = [[INF] * (m + 1) for _ in range(n + 1)]
+    B = [[None] * (m + 1) for _ in range(n + 1)]
+    D[0][0] = 0
+    for i in range(n + 1):
+        for j in range(m + 1):
+            if D[i][j] == INF:
+                continue
+            if i < n and j < m and D[i][j] + abs(ft[i] - fc[j]) < D[i + 1][j + 1]:
+                D[i + 1][j + 1], B[i + 1][j + 1] = D[i][j] + abs(ft[i] - fc[j]), (i, j, True)
+            if i < n and D[i][j] + SKIP < D[i + 1][j]:
+                D[i + 1][j], B[i + 1][j] = D[i][j] + SKIP, (i, j, False)
+            if j < m and D[i][j] + SKIP < D[i][j + 1]:
+                D[i][j + 1], B[i][j + 1] = D[i][j] + SKIP, (i, j, False)
+    pairs, i, j = [], n, m
+    while (i, j) != (0, 0):
+        pi, pj, match = B[i][j]
+        if match:
+            pairs.append((pi, col[pj]))
+        i, j = pi, pj
+    return pairs[::-1]
 
 
 def breaks(only):
@@ -158,7 +205,11 @@ def breaks(only):
     pages = only or [s for s in scans() if (KSEG / f"s{s:03d}.json").exists()]
     bad, nb = [], 0
     for s in pages:
-        rec = page_breaks(s)
+        try:
+            rec = page_breaks(s)
+        except (statistics.StatisticsError, ValueError, IndexError) as ex:  # no full lines to measure (a short page)
+            rec = {"lines": len(he_lines(s)), "column_lines": 0, "starts": [], "why": {}, "mismatch": True,
+                   "error": str(ex)}
         data[f"s{s:03d}"] = rec
         nb += len(rec["starts"])
         if rec.get("mismatch"):
