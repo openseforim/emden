@@ -8,6 +8,8 @@
   "title_he": "מגילת ספר",
   "author": "Jacob Emden (1697–1776)",
   "status_label": "Complete",
+  "start": "ch1.html",
+  "start_label": "Chapter 1",
   "summary": "Kahana's Hebrew text (1896/97) from Gershom Scholem's annotated copy, with an English translation.",
   "base_edition": {
     "label": "ed. David Kahana, Warsaw 1896/97 (Gershom Scholem's copy)",
